@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <h1>Dashboard</h1>
+
+    <h2>Resumen General</h2>
+    <p>Total de solicitudes: {{ data.total_solicitudes }}</p>
+    <p>Solicitudes resueltas: {{ data.solicitudes_resueltas }}</p>
+    <p>Solicitudes pendientes: {{ data.solicitudes_pendientes }}</p>
+
+    <h2>Solicitudes por Municipio</h2>
+    <ul>
+        {% for municipio, cantidad in data.tramites_por_municipio %}
+        <li>{{ municipio }}: {{ cantidad }}</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

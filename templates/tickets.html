@@ -1,0 +1,115 @@
+{% extends "base_bootstrap.html" %}
+  {% block body %}
+    <body id="ticket">
+    <div class="container_ticket">
+    <p><img src="https://ruizhealytimes.com/wp-content/uploads/2014/07/sep_0.png" width="100" height="70" align="left"></p>           
+    <h1 id="ticket">Ticket de Turno</h1>
+    <p><img src="https://static.vecteezy.com/system/resources/previews/028/630/976/original/number-3-in-an-orange-circle-free-png.png" width="60" height="60"></p>
+    <form name="forma" id="forma" action="/registrat" method="post" onsubmit="return valida_forma();"> 
+         
+        <div id="row">
+            <div class="col-50">
+                <label>Nombre completo de quien realizará el trámite:</label>
+                <input type="text" name="t_nombrecom" id="t_nombrecom" maxlength="100" placeholder="Ingrese el nombre completo" class="mayusculas">
+            </div>
+            <div class="col-51">
+                <label>CURP:</label>
+                <input type="text" name="t_curp" id="t_curp" maxlength="18" placeholder="Ingrese la CURP" class="mayusculas">
+            </div>
+        </div>
+
+        <div id="row">
+            <div class="col-25">
+                <label>Nombre:</label>
+                <input type="text" name="t_nombre" id="t_nombre" maxlength="50" placeholder="Ingrese el nombre" class="mayusculas">
+            </div>
+            <div class="col-25">
+                <label>Paterno:</label>
+                <input type="text" name="t_paterno" id="t_paterno" maxlength="50" placeholder="Ingrese el apellido paterno" class="mayusculas">
+            </div>
+            <div class="col-25">
+                <label>Materno:</label>
+                <input type="text" name="t_materno" id="t_materno" maxlength="50" placeholder="Ingrese el apellido materno" class="mayusculas">
+            </div>
+        </div>
+
+        <div id="row">
+            <div class="col-25">
+                <label>Telefono:</label>
+                <input type="text" name="t_telefono" id="t_telefono" maxlength="10" placeholder="Ingrese un telefono" pattern="[0-9]{10}" class="mayusculas">
+            </div>
+            <div class="col-25">
+                <label>Celular:</label>
+                <input type="text" name="t_celular" id="t_celular" maxlength="10" placeholder="Ingrese un celular" pattern="[0-9]{10}" class="mayusculas">
+            </div>
+            <div class="col-25">
+                <label>Correo:</label>
+                <input type="email" name="t_correo" id="t_correo" maxlength="100" placeholder="Ingrese un correo electronico" class="mayusculas">
+            </div>
+        </div>
+
+        <div id="row">
+            <div class="col-75">
+                <label>¿Nivel al que desea ingresar o que ya cursa el alumno?</label>
+            </div>
+            <div class="col-75">
+                <select name="t_id_curso" id="t_id_curso">
+                    <option value="0">SELECCIONA:</option>
+                    <option value="1">Primaria</option>
+                    <option value="2">Secundaria</option>
+                    <option value="3">Preparatoria</option>
+                </select>  
+            </div>
+        </div>
+
+        <div id="row">
+            <div class="col-75">
+                <label>Municipio donde desea estudiar el alumno:</label>
+            </div>
+            <div class="col-75">
+                <select name="t_id_municipio" id="t_id_municipio">
+                    <option value="0">SELECCIONA:</option>
+                    <option value="1">Saltillo</option>
+                    <option value="2">Torreón</option>
+                    <option value="3">Monclova</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="row">
+            <div class="col-75">
+                <label>Selecciona el asunto que va a tratar:</label>
+            </div>
+            <div class="col-75">
+                <select name="t_id_asunto" id="t_id_asunto">
+                    <option value="0">SELECCIONA:</option>
+                    <option value="1">Inscripción</option>
+                    <option value="2">Baja</option>
+                    <option value="3">Cambio</option>
+                </select>
+            </div>
+        </div>
+        <div id="row">
+            <div class="col-50">
+                <label for="hora">Hora de Servicio:</label>
+                <input type="time" name="hora" id="hora"> 
+            </div>
+            <div class="col-51">
+                <label for="fecha">Fecha de Servicio:</label>
+                <input type="date" name="fecha" id="fecha">
+            </div>
+        </div>
+
+
+        <div id="row2">
+            <input class="boton_menu" type="submit" value="Registro" />
+        </div>
+                
+        <p>
+        <img src="https://www.clavei.es/wp-content/uploads/c%C3%B3digo-de-barras.jpg.webp"  width="150" height="150">
+        <img src="https://borealtech.com/wp-content/uploads/2018/10/codigo-qr-1024x1024-1.jpg"  width="150" height="150">
+        </p>
+    </form>
+    </div>
+    </body>
+    {% endblock %}

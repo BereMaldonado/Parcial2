@@ -1,0 +1,68 @@
+import model.package_model.Database as Database
+class Tramite:
+    def __init__(self, idtramite='', nombreCompleto=''):
+        self.__idtramite=idtramite
+        self.__nombreCompleto=nombreCompleto
+        
+    def update_tramite(self, obj_asp):
+        conexion = Database.Database()
+        with conexion.cursor as cursor:
+            try:
+                query="update tramite set NOMBRECOMPLETO=%s where IDTRAMITE=%s"
+                vals=(obj_asp.__nombreCompleto,obj_asp.__idtramite)
+                #return (query % vals) 
+                affected=cursor.execute(query,vals)
+                conexion.conn.commit()
+                return str(cursor.rowcount)
+            except Exception as e:
+                return e
+            except pymysql.err.ProgrammingError as except_detail:
+                return print("pymysql.err.ProgrammingError: «{}»".format(except_detail))
+            finally:
+                conexion.conn.close()
+                
+    def eliminar_tramite(self,id):
+        affected=0
+        conexion = Database.Database()
+        with conexion.cursor as cursor:
+            affected=cursor.execute("DELETE FROM tramite WHERE IDTRAMITE = %s", (id))
+        conexion.conn.commit()
+        conexion.conn.close()
+        return affected
+    
+    def insertar_tramite(self, obj_asp):
+        conexion = Database.Database()
+        with conexion.cursor as cursor:
+            try:
+                query="INSERT INTO tramite(NOMBRECOMPLETO) VALUES (%s)"
+                vals=(obj_asp.__descripcion)
+                #return (query % vals) 
+                affected=cursor.execute(query,vals)
+                conexion.conn.commit()
+                return str(cursor.rowcount)
+            except Exception as e:
+                return e
+            except pymysql.err.ProgrammingError as except_detail:
+                return print("pymysql.err.ProgrammingError: «{}»".format(except_detail))
+            finally:
+                conexion.conn.close() 
+
+        
+    def obtener_tramite(self):
+        conexion = Database.Database()
+        tramite = []
+        with conexion.cursor as cursor:
+            cursor.execute("SELECT IDTRAMITE, NOMBRECOMPLETO FROM tramitante")
+            tramites = cursor.fetchall()
+        conexion.conn.close()
+        return tramites
+    
+    def obtener_tramite_por_id(self,id):
+        conexion = conexion = Database.Database()
+        tramite = None
+        with conexion.cursor as cursor:
+            cursor.execute(
+                "SELECT IDTRAMITE,NOMBRECOMPLETO FROM tramitante WHERE IDTRAMITANTE = %s",(id))
+            tramite = cursor.fetchone()
+        conexion.conn.close()
+        return tramite

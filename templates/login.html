@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <h1>Iniciar sesión</h1>
+    <form action="/login" method="post">
+        <input type="text" name="user" placeholder="Usuario"><br>
+        <input type="password" name="password" placeholder="Contraseña"><br>
+        <div class="g-recaptcha" data-sitekey="6Ld_IbspAAAAAFFk99l4QTgFwla7vNa_qiuHJUfi"></div>
+        <button type="submit">Iniciar sesión</button>
+    </form>
+</body>
+</html>
